@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portafolio | Fernando Ortega</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="Recursos/Logo.jpg" type="image/png">
+  </head>
+  <body>
+    
+    <header>
+      <a href="#" class="logo">FOM<span>.</span></a>
+      <i class="fa-solid fa-bars" id="menu-icono"></i>
+      
+      <nav id="menu-principal" class="navegacion">
+        <a href="#inicio" class="active">Inicio</a>
+        <a href="#sobre-mi">Sobre Mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contáctame</a>
+      </nav>
+    </header>
+
+    <section id="inicio" class="home">
+      <div class="home-content">
+    <h3>Hola, soy</h3>
+    <h1>Fernando Ortega</h1>
+    <div class="typing-text">
+        <span></span>
+    </div> 
+            
+    <div class="contenedor-social">
+        <div class="social-icons">
+            <a href="https://github.com/OrtegaF06" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/fernando-ortega-m-302a24300/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        
+        <a href="Recursos/Fernando_Ortega_CV.pdf" class="btn" download>Descargar CV</a>
+    </div>
+</div>
+
+      <div class="home-img">
+        <img src="https://avatars.githubusercontent.com/u/186651157?v=4" alt="Foto de Fernando Ortega"/>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="sobre-mi">
+      <h2 class="heading">Quien <span>Soy?</span></h2>
+      <div class="sobre-mi-content">
+        <p>Especializado en la creación de interfaces intuitivas y funcionales mediante el stack de frontend (HTML5, CSS3, JavaScript), complementado con una sólida capacidad técnica en el desarrollo de lógica de servidor utilizando Python. Poseo experiencia práctica en el diseño, normalización y optimización de bases de datos relacionales, asegurando la integridad y eficiencia en el manejo de grandes volúmenes de información.
+        <br>Mi objetivo es integrarme a un equipo dinámico en el sector tecnológico donde pueda transformar requerimientos complejos en soluciones técnicas escalables, aportando una visión analítica y un compromiso constante con las mejores prácticas de programación.</p>
+      </div>
+    </section>
+
+    <section id="proyectos" class="proyectos">
+      <h2 class="heading">Mis <span>Proyectos</span></h2>
+      <div class="proyectos-container">
+        <div class="proyecto-box">
+          <i class="fa-solid fa-hotel"></i>
+          <h3>Gestión Hotelera</h3>
+          <p>Sistema desarrollado para el control y gestión de citas y reservas de un hotel, implementando la lógica en Python y el manejo de base de datos con SQL Server.</p>
+          <a href="#" class="btn">Ver Proyecto</a>
+        </div>
+
+        <div class="proyecto-box">
+          <i class="fa-solid fa-code"></i>
+          <h3>Portafolio Web</h3>
+          <p>Diseño y maquetación de mi portafolio personal utilizando HTML semántico, CSS (Flexbox/Grid) para la responsividad e interacciones básicas.</p>
+          <a href="#" class="btn">Ver Proyecto</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <h2 class="heading"><span>Contáctame</span></h2>
+      <form action="#">
+        <div class="input-box">
+          <input type="text" name="nombre" placeholder="Nombre Completo" required>
+          <input type="email" name="correo" placeholder="Correo Electrónico" required>
+        </div>
+        <textarea name="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        <input type="submit" value="Enviar Mensaje" class="btn">
+      </form>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
