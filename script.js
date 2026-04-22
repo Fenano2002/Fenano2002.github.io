@@ -1,35 +1,78 @@
-/* --- LÓGICA PARA EL MENÚ DE HAMBURGUESA --- */
-let menuIcono = document.querySelector('#menu-icono');
-let navegacion = document.querySelector('.navegacion');
+const menuIcono = document.querySelector('#menu-icono');
+const navegacion = document.querySelector('.navegacion');
+const secciones = document.querySelectorAll('section');
+const enlacesNav = document.querySelectorAll('header nav a');
 
-menuIcono.onclick = () => {
-    // Alterna el icono entre "bars" (hamburguesa) y "x" (cerrar)
+menuIcono.addEventListener('click', () => {
     menuIcono.classList.toggle('fa-xmark');
-    // Muestra u oculta el menú
     navegacion.classList.toggle('active');
-}
+});
 
-/* --- SECCIONES ACTIVAS SEGÚN EL SCROLL --- */
-let secciones = document.querySelectorAll('section');
-let enlacesNav = document.querySelectorAll('header nav a');
+/* SECCIONES ACTIVAS SEGÚN EL SCROLL*/
+window.addEventListener('scroll', () => {
+    let top = window.scrollY;
 
-window.onscroll = () => {
     secciones.forEach(sec => {
-        let top = window.scrollY;
         let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
         if(top >= offset && top < offset + height) {
-            enlacesNav.forEach(enlaces => {
-                enlaces.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            enlacesNav.forEach(enlace => {
+                enlace.classList.remove('active');
+                if (enlace.getAttribute('href') === '#' + id) {
+                    enlace.classList.add('active');
+                }
             });
-        };
+        }
     });
 
-    /* --- QUITAR ICONO Y MENÚ AL HACER SCROLL --- */
-    // Esto asegura que si el usuario hace scroll, el menú se cierre solo
+    /* QUITAR ICONO Y MENÚ AL HACER SCROLL */
     menuIcono.classList.remove('fa-xmark');
     navegacion.classList.remove('active');
-};
+});
+
+/* ENVIAR CORREO CON EMAILJS */
+emailjs.init("NeGNFdyO_1Bbnz4sJ");
+
+const btn = document.getElementById('button-send');
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loader"></span> Enviando...';
+
+        const serviceID = 'service_460c6ve';
+        const templateID = 'template_qwd3hk6';
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.disabled = false;
+                btn.innerHTML = '¡Mensaje Enviado!';
+                btn.style.backgroundColor = 'var(--accent-color)'; 
+                
+                alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+                contactForm.reset(); 
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="btn-text">Enviar Mensaje</span>';
+                    btn.style.backgroundColor = '';
+                }, 3000);
+            }, (err) => {
+                btn.disabled = false;
+                btn.innerHTML = 'Error al enviar';
+                btn.style.backgroundColor = '#e74c3c';
+                
+                console.error('EmailJS Error:', err);
+                alert('Hubo un problema de conexión. Por favor, inténtalo de nuevo.');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="btn-text">Enviar Mensaje</span>';
+                    btn.style.backgroundColor = ''; 
+                }, 3000);
+            });
+    });
+}
