@@ -8,7 +8,6 @@ menuIcono.addEventListener('click', () => {
     navegacion.classList.toggle('active');
 });
 
-/* SECCIONES ACTIVAS SEGÚN EL SCROLL*/
 window.addEventListener('scroll', () => {
     let top = window.scrollY;
 
@@ -27,12 +26,10 @@ window.addEventListener('scroll', () => {
         }
     });
 
-    /* QUITAR ICONO Y MENÚ AL HACER SCROLL */
     menuIcono.classList.remove('fa-xmark');
     navegacion.classList.remove('active');
 });
 
-/* ENVIAR CORREO CON EMAILJS */
 emailjs.init("NeGNFdyO_1Bbnz4sJ");
 
 const btn = document.getElementById('button-send');

@@ -6,7 +6,7 @@
     <title>Mi Portafolio | Fernando Ortega</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="Recursos/Logo.jpg" type="image/png">
+    <link rel="shortcut icon" href="Recursos/Logo.jpg" type="image/jpeg">
   </head>
   <body>
     
@@ -17,7 +17,8 @@
       <nav id="menu-principal" class="navegacion">
         <a href="#inicio" class="active">Inicio</a>
         <a href="#sobre-mi">Sobre Mí</a>
-        <a href="#proyectos">Proyectos</a>
+        <a href="#educacion">Educación</a>
+        <a href="#experiencia">Experiencia</a>
         <a href="#contacto">Contáctame</a>
       </nav>
     </header>
@@ -46,29 +47,123 @@
 
     <section id="sobre-mi" class="sobre-mi">
       <h2 class="heading">Quién <span>Soy?</span></h2>
-      <div class="sobre-mi-content">
-        <p>Especializado en la creación de interfaces intuitivas y funcionales mediante el stack de frontend (HTML5, CSS3, JavaScript), complementado con una sólida capacidad técnica en el desarrollo de lógica de servidor utilizando Python. Poseo experiencia práctica en el diseño, normalización y optimización de bases de datos relacionales, asegurando la integridad y eficiencia en el manejo de grandes volúmenes de información.</p>
-        <br>
-        <p>Mi objetivo es integrarme a un equipo dinámico en el sector tecnológico donde pueda transformar requerimientos complejos en soluciones técnicas escalables, aportando una visión analítica y un compromiso constante con las mejores prácticas de programación.</p>
+      
+      <div class="sobre-mi-row">
+        <div class="sobre-mi-content">
+          <p>Especializado en la creación de interfaces intuitivas y funcionales mediante el stack de frontend (HTML5, CSS3, JavaScript), complementado con una sólida capacidad técnica en el desarrollo de lógica de servidor utilizando Python. Poseo experiencia práctica en el diseño, normalización y optimización de bases de datos relacionales, asegurando la integridad y eficiencia en el manejo de grandes volúmenes de información.</p>
+        </div>
+        
+        <div class="skills-section">
+          <div class="skills-container">
+            <div class="skills__item">
+              <img src="Recursos/html.6aa56206be02cf6404844871df1d2da6.png" alt="HTML5">
+              <div class="skills__item-name">HTML5</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/js.f8a28e905c78dadb79434b7ceebd52a0.png" alt="JavaScript">
+              <div class="skills__item-name">JS</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/css.0ce0f0a2b4c4aa34b64c40e5278af3d1.png" alt="CSS3">
+              <div class="skills__item-name">CSS3</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/py.624bcc94d9a32d8cddac41f381aa4395.png" alt="Python">
+              <div class="skills__item-name">Python</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/java.png" alt="Java">
+              <div class="skills__item-name">Java</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/C_Logo.png" alt="C">
+              <div class="skills__item-name">C</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/ISO_C++_Logo.svg.png" alt="C++">
+              <div class="skills__item-name">C++</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/Kotlin_Icon.png" alt="kotlin">
+              <div class="skills__item-name">Kotlin</div>
+            </div>
+            <div class="skills__item">
+              <img src="Recursos/Microsoft_SQL_Server_2025_icon.svg.png" alt="SQL">
+              <div class="skills__item-name">SQL</div>
+            </div>
+            <div class="skills__item">
+              <i class="fa-brands fa-github" style="font-size: 4rem; color: #fff; margin-bottom: 8px;"></i>
+              <div class="skills__item-name">Git</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="proyectos" class="proyectos">
-      <h2 class="heading">Mis <span>Proyectos</span></h2>
-      <div class="proyectos-container">
-        <div class="proyecto-box">
-          <i class="fa-solid fa-hotel"></i>
-          <h3>Gestión Hotelera</h3>
-          <p>Sistema desarrollado para el control y gestión de citas y reservas de un hotel, implementando la lógica en Python y el manejo de base de datos con SQL Server.</p>
-          <a href="https://github.com/Fenano2002/Empresa-Entretenimiento-y-Vacaciones" target="_blank" class="btn">Ver Proyecto</a>
+    <section id="educacion" class="educacion">
+      <h2 class="heading">Mi <span>Educación</span></h2>
+      <div class="educacion-container">
+        <div class="educacion-box">
+          <img src="Recursos/upiicsa.png" alt="Logo UPIICSA" class="edu-img">
+          <h3>Unidad Profesional Interdisciplinaria de Ingeniería y Ciencias Sociales y Administrativas (UPIICSA-IPN)</h3>
+          <p class="titulo">Licenciatura en Ciencias de la Informática</p>
+          <p class="fecha">Cursando...</p>
+          <p class="descripcion">Actualmente cursando la carrera, con un enfoque en desarrollo de software, bases de datos y sistemas distribuidos.</p>
         </div>
 
-        <div class="proyecto-box">
-          <i class="fa-solid fa-code"></i>
-          <h3>Portafolio Web</h3>
-          <p>Diseño y maquetación de mi portafolio personal utilizando HTML semántico, CSS (Flexbox/Grid) para la responsividad e interacciones básicas.</p>
-          <a href="#inicio" class="btn">Ver Proyecto</a>
+        <div class="educacion-box">
+          <img src="Recursos/Logo_Cbtis.png" alt="Logo CBTIS 227" class="edu-img">
+          <h3>Centro de Bachillerato Tecnológico Industrial y de Servicios No. 227</h3>
+          <p class="titulo">Técnico en Programación</p>
+          <p class="fecha">2017 - 2020</p>
+          <p class="descripcion">Formación técnica en programación, Desarrollo de software, bases de datos (SQL), diseño de páginas web (HTML/CSS) y programación orientada a objetos.</p>
         </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="experiencia">
+      <h2 class="heading">Mi <span>Experiencia</span></h2>
+      <div class="experiencia-container">
+        
+        <div class="experiencia-box">
+          <div class="exp-header">
+            <h3>Desarrollador Web Freelance</h3>
+            <span class="fecha">2021 - Presente</span>
+          </div>
+          <p class="empresa">Freelance</p>
+          <ul>
+            <li>Desarrollo de sitios web personalizados para clientes utilizando HTML, CSS y JavaScript.</li>
+            <li>Implementación de funcionalidades interactivas y optimización del rendimiento del sitio.</li>
+            <li>Colaboración con diseñadores gráficos para crear interfaces atractivas y funcionales.</li>
+          </ul>
+        </div>
+
+        <div class="experiencia-box">
+          <div class="exp-header">
+            <h3>Vendedor de Departamento</h3>
+            <span class="fecha">2023 - 2024</span>
+          </div>
+          <p class="empresa">Sanborns</p>
+          <ul>
+            <li>Atención al cliente y ventas en tienda.</li>
+            <li>Acomodo de productos en el área de ventas.</li>
+            <li>Limpieza y mantenimiento del área de ventas.</li>
+          </ul>
+        </div>
+
+        <div class="experiencia-box">
+          <div class="exp-header">
+            <h3>Ayudante General</h3>
+            <span class="fecha">2022 - 2023</span>
+          </div>
+          <p class="empresa">Office Max</p>
+          <ul>
+            <li>Atencion al cliente y ventas en tienda.</li>
+            <li>Surtido y limpieza de productos.</li>
+            <li>Manipulación de cajas y muebles.</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
