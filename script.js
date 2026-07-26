@@ -1,6 +1,7 @@
+'use strict';
+
 const menuIcono = document.querySelector('#menu-icono');
 const navegacion = document.querySelector('.navegacion');
-const secciones = document.querySelectorAll('section');
 const enlacesNav = document.querySelectorAll('header nav a');
 
 menuIcono.addEventListener('click', () => {
@@ -9,67 +10,115 @@ menuIcono.addEventListener('click', () => {
 });
 
 window.addEventListener('scroll', () => {
-    let top = window.scrollY;
+    menuIcono.classList.remove('fa-xmark');
+    navegacion.classList.remove('active');
+}, { passive: true });
 
-    secciones.forEach(sec => {
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.4
+};
 
-        if(top >= offset && top < offset + height) {
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
             enlacesNav.forEach(enlace => {
                 enlace.classList.remove('active');
-                if (enlace.getAttribute('href') === '#' + id) {
+                if (enlace.getAttribute('href') === `#${id}`) {
                     enlace.classList.add('active');
                 }
             });
         }
     });
+}, observerOptions);
 
-    menuIcono.classList.remove('fa-xmark');
-    navegacion.classList.remove('active');
+document.querySelectorAll('section').forEach(sec => navObserver.observe(sec));
+
+
+const sliders = document.querySelectorAll('.proyecto-slider');
+
+sliders.forEach(slider => {
+    const wrapper = slider.querySelector('.slider-wrapper');
+    const slides = slider.querySelectorAll('.slider-wrapper img');
+    const btnPrev = slider.querySelector('.prev');
+    const btnNext = slider.querySelector('.next');
+    const dots = slider.querySelectorAll('.dot');
+    
+    let currentIndex = 0;
+
+    function updateSlider() {
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        dots.forEach(dot => dot.classList.remove('active'));
+        if(dots[currentIndex]) {
+            dots[currentIndex].classList.add('active');
+        }
+    }
+
+    if(btnNext) {
+        btnNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        });
+    }
+
+    if(btnPrev) {
+        btnPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        });
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+        });
+    });
 });
+
 
 emailjs.init("NeGNFdyO_1Bbnz4sJ");
 
-const btn = document.getElementById('button-send');
+const btnSend = document.getElementById('button-send');
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault(); 
 
-        btn.disabled = true;
-        btn.innerHTML = '<span class="loader"></span> Enviando...';
+        const originalText = btnSend.innerHTML;
+        btnSend.disabled = true;
+        btnSend.innerHTML = '<span class="loader"></span> Enviando...';
 
         const serviceID = 'service_460c6ve';
         const templateID = 'template_qwd3hk6';
 
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
-                btn.disabled = false;
-                btn.innerHTML = '¡Mensaje Enviado!';
-                btn.style.backgroundColor = 'var(--accent-color)'; 
+                btnSend.innerHTML = '<i class="fa-solid fa-check"></i> ¡Mensaje Enviado!';
+                btnSend.classList.add('success');
                 
-                alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
                 contactForm.reset(); 
                 
                 setTimeout(() => {
-                    btn.innerHTML = '<span class="btn-text">Enviar Mensaje</span>';
-                    btn.style.backgroundColor = '';
-                }, 3000);
-            }, (err) => {
-                btn.disabled = false;
-                btn.innerHTML = 'Error al enviar';
-                btn.style.backgroundColor = '#e74c3c';
-                
+                    btnSend.disabled = false;
+                    btnSend.innerHTML = originalText;
+                    btnSend.classList.remove('success');
+                }, 4000);
+            })
+            .catch((err) => {
                 console.error('EmailJS Error:', err);
-                alert('Hubo un problema de conexión. Por favor, inténtalo de nuevo.');
+                btnSend.innerHTML = '<i class="fa-solid fa-xmark"></i> Error al enviar';
+                btnSend.classList.add('error');
                 
                 setTimeout(() => {
-                    btn.innerHTML = '<span class="btn-text">Enviar Mensaje</span>';
-                    btn.style.backgroundColor = ''; 
-                }, 3000);
+                    btnSend.disabled = false;
+                    btnSend.innerHTML = originalText;
+                    btnSend.classList.remove('error'); 
+                }, 4000);
             });
     });
 }
