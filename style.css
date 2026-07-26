@@ -48,6 +48,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 section {
@@ -441,7 +442,7 @@ header {
     margin: 0 auto;
 }
 
-.educacion-box, .proyecto-box {
+.educacion-box {
     background: var(--second-bg-color);
     padding: 3.5rem 3rem;
     border-radius: 2rem;
@@ -452,7 +453,7 @@ header {
     flex-direction: column;
 }
 
-.educacion-box:hover, .proyecto-box:hover {
+.educacion-box:hover {
     transform: translateY(-8px);
     border-color: var(--main-color);
     box-shadow: var(--card-shadow-hover);
@@ -498,31 +499,47 @@ header {
     margin-top: auto;
 }
 
-/* ESTILOS DE LOS PROYECTOS Y CARRUSEL DE IMÁGENES */
 .proyectos {
     background: var(--second-bg-color);
 }
 
 .proyectos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 4rem;
-    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .proyecto-box {
     background: var(--bg-color);
-    padding: 2.5rem;
-    text-align: left;
+    padding: 3.5rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+}
+
+.proyecto-box:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.proyecto-box:hover {
+    transform: translateY(-8px);
+    border-color: var(--main-color);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .proyecto-slider {
     position: relative;
-    width: 100%;
+    flex: 0 0 50%;
+    width: 50%;
     border-radius: 1.2rem;
     overflow: hidden;
-    margin-bottom: 2.5rem;
 }
 
 .slider-wrapper {
@@ -532,8 +549,9 @@ header {
 }
 
 .slider-wrapper img {
-    min-width: 100%;
-    height: 220px;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 300px;
     object-fit: cover;
 }
 
@@ -596,11 +614,33 @@ header {
     border-radius: 1rem;
 }
 
+.proyecto-info {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.proyecto-box h3 {
+    font-size: 2.6rem;
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.proyecto-box .descripcion {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
 }
 
 .tech-tags .tag {
@@ -611,21 +651,6 @@ header {
     font-size: 1.2rem;
     font-weight: 600;
     border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-.proyecto-box h3 {
-    font-size: 2.2rem;
-    color: var(--heading-color);
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.proyecto-box .descripcion {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-    flex-grow: 1;
 }
 
 .experiencia {
@@ -797,11 +822,37 @@ header {
     
     .home-content h1 { font-size: 5rem; }
     .contenedor-social { justify-content: center; }
-    
     .sobre-mi-row { text-align: center; }
     
-    .educacion-container, .proyectos-container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .educacion-container {
+        grid-template-columns: 1fr;
+    }
+
+    .proyecto-box, 
+    .proyecto-box:nth-child(even) {
+        flex-direction: column;
+        padding: 3rem;
+        gap: 2.5rem;
+    }
+    
+    .proyecto-slider {
+        width: 100%;
+        flex: none;
+    }
+    
+    .proyecto-info {
+        width: 100%;
+        flex: none;
+        align-items: center;
+        text-align: center;
+    }
+
+    .slider-wrapper img {
+        height: 250px;
+    }
+
+    .tech-tags {
+        justify-content: center;
     }
 }
 
@@ -844,5 +895,15 @@ header {
         padding: 3rem 2rem;
         border-radius: 1.5rem;
         border-left: 4px solid var(--main-color);
+    }
+    
+    .educacion-box, 
+    .proyecto-box, 
+    .proyecto-box:nth-child(even) {
+        padding: 2.5rem 2rem; 
+    }
+
+    .slider-wrapper img {
+        height: 220px;
     }
 }
